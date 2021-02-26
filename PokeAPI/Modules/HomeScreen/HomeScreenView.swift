@@ -51,26 +51,21 @@ class HomeScreenView: UIView {
     func setupHierachy(){
         self.addSubview(collectionView)
     }
-    
-    
 }
 
 extension HomeScreenView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let data = viewModel.pokemons?.results {
-            return data.count
-        }
-        return 0
+        return viewModel.poke.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pokemonCellId, for: indexPath) as? HomeScreenCollectionViewCell
-        if let data = viewModel.pokemons?.results {
-            cell?.setup(pokemons: data[indexPath.row], id: viewModel.getPokemonId(indice: indexPath.row))
-            cell?.backgroundColor = viewModel.generateRandomColor()
-            cell?.layer.cornerRadius = 12
-            cell?.layer.masksToBounds = true
-        }
+        cell?.setup(pokemons: viewModel.poke[indexPath.row], id: viewModel.getPokemonId(indice: indexPath.row))
+        cell?.backgroundColor = viewModel.generateRandomColor()
+        cell?.layer.cornerRadius = 12
+        cell?.layer.masksToBounds = true
+        
         return cell ?? UICollectionViewCell()
     }
     
@@ -86,21 +81,14 @@ extension HomeScreenView: UICollectionViewDataSource, UICollectionViewDelegate, 
         return 2
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let data = viewModel.pokemons?.results {
-            if indexPath.row == data.count - 1 {
-                updateNextSet()
-            }
+        if indexPath.row == viewModel.getPokemonsCount() - 2{
+            updateNextSet()
         }
         
     }
     func updateNextSet(){
-        print("Batata")
+        if let next = viewModel.pokemons?.next {
+            viewModel.getPokemons(url: next)
+        }
     }
-    
-    
-    
-    
-    
-    
-    
 }
