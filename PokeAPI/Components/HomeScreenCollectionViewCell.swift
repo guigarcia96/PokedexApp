@@ -40,7 +40,7 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
     }
     
     func setup(pokemons: Results, id:String){
-        cellLabel.text = pokemons.name
+        cellLabel.text = pokemons.name.capitalizingFirstLetter()
         cellImage.from(url: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(id).png")
     }
     
