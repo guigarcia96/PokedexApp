@@ -23,20 +23,26 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    convenience init() {
-        self.init(frame: .zero)
-        
+    override init(frame: CGRect = .zero) {
+        super.init(frame: frame)
+        setupUI()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cellImage.image = nil
+        cellLabel.text = nil
+        self.backgroundColor = .white
+    }
     
     func setup(pokemons: Results, id:String){
         cellLabel.text = pokemons.name
         cellImage.from(url: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(id).png")
-        setupUI()
     }
-    
-    
     
     private func setupUI(){
         contentView.addSubview(cellImage)
