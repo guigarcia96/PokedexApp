@@ -13,7 +13,6 @@ class HomeScreenViewModel {
     var pokemons:Pokemons?
     var poke:[Results] = []
     var fetchInProgress:Bool = false
-    
     weak var delegate: HomeScreenView?
     
     init() {
