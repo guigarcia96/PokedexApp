@@ -11,6 +11,7 @@ class HomeScreenView: UIView {
     
     var viewModel = HomeScreenViewModel()
     let pokemonCellId = "pokemonCellId"
+    let indicadorCellId = "indicatorCellId"
     
     private lazy var collectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
@@ -18,7 +19,7 @@ class HomeScreenView: UIView {
         collectionView.backgroundColor = .darkGray
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(HomeScreenCollectionViewCell.self, forCellWithReuseIdentifier:pokemonCellId )
-        collectionView.register(IndicatorCell.self, forCellWithReuseIdentifier:"indicator" )
+        collectionView.register(IndicatorCell.self, forCellWithReuseIdentifier: indicadorCellId )
         return collectionView
     }()
     
@@ -71,7 +72,7 @@ extension HomeScreenView: UICollectionViewDataSource, UICollectionViewDelegate, 
             return cell ?? UICollectionViewCell()
             
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "indicator", for: indexPath) as! IndicatorCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: indicadorCellId, for: indexPath) as! IndicatorCell
             cell.setup()
             cell.indicator.startAnimating()
             return cell
