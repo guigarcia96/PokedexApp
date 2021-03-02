@@ -97,7 +97,7 @@ extension HomeScreenView: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == viewModel.poke.count{
-            let seconds = 0.5
+            let seconds = 0.2
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
                 self.updateNextSet()
             }
