@@ -18,6 +18,7 @@ class HomeScreenView: UIView {
         collectionView.backgroundColor = .darkGray
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(HomeScreenCollectionViewCell.self, forCellWithReuseIdentifier:pokemonCellId )
+        collectionView.register(IndicatorCell.self, forCellWithReuseIdentifier:"indicator" )
         return collectionView
     }()
     
@@ -27,6 +28,7 @@ class HomeScreenView: UIView {
         setupConstraints()
         configure()
         reloadData()
+        
         
     }
     
@@ -55,23 +57,36 @@ class HomeScreenView: UIView {
 
 extension HomeScreenView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.poke.count
+        return viewModel.poke.count + 1
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pokemonCellId, for: indexPath) as? HomeScreenCollectionViewCell
-        cell?.setup(pokemons: viewModel.poke[indexPath.row], id: viewModel.getPokemonId(indice: indexPath.row))
-        cell?.backgroundColor = viewModel.generateRandomColor()
-        cell?.layer.cornerRadius = 12
-        cell?.layer.masksToBounds = true
-        
-        return cell ?? UICollectionViewCell()
+        if indexPath.row != viewModel.poke.count {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pokemonCellId, for: indexPath) as? HomeScreenCollectionViewCell
+            cell?.setup(pokemons: viewModel.poke[indexPath.row], id: viewModel.getPokemonId(indice: indexPath.row))
+            cell?.backgroundColor = viewModel.generateRandomColor()
+            cell?.layer.cornerRadius = 12
+            cell?.layer.masksToBounds = true
+            return cell ?? UICollectionViewCell()
+            
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "indicator", for: indexPath) as! IndicatorCell
+            cell.setup()
+            cell.indicator.startAnimating()
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width / 2-1
-        return CGSize(width: width, height: width)
+        if indexPath.row < viewModel.poke.count {
+            let width = collectionView.frame.width / 2-1
+            return CGSize(width: width, height: width)
+        } else {
+            let width = collectionView.frame.width
+            return CGSize(width: width , height: 40)
+        }
+       
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
@@ -81,10 +96,12 @@ extension HomeScreenView: UICollectionViewDataSource, UICollectionViewDelegate, 
         return 2
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.getPokemonsCount() - 2{
-            updateNextSet()
+        if indexPath.row == viewModel.poke.count{
+            let seconds = 0.5
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                self.updateNextSet()
+            }
         }
-        
     }
     func updateNextSet(){
         if let next = viewModel.pokemons?.next {

@@ -17,7 +17,7 @@
 		C4713F8D25E71D890072666A /* Pokemons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4713F8C25E71D890072666A /* Pokemons.swift */; };
 		C4713F9225E71F230072666A /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4713F9125E71F230072666A /* UIImageView+URL.swift */; };
 		C4713F9625E7C21D0072666A /* PokemonsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4713F9525E7C21D0072666A /* PokemonsService.swift */; };
-		C4713F9925E812FF0072666A /* PokemonsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4713F9825E812FF0072666A /* PokemonsInfo.swift */; };
+		C4A50AAB25EE4D2E00AA44E3 /* IndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A50AAA25EE4D2E00AA44E3 /* IndicatorCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		C4713F8C25E71D890072666A /* Pokemons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemons.swift; sourceTree = "<group>"; };
 		C4713F9125E71F230072666A /* UIImageView+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
 		C4713F9525E7C21D0072666A /* PokemonsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonsService.swift; sourceTree = "<group>"; };
-		C4713F9825E812FF0072666A /* PokemonsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonsInfo.swift; sourceTree = "<group>"; };
+		C4A50AAA25EE4D2E00AA44E3 /* IndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				C4713F8725E719EE0072666A /* HomeScreenCollectionViewCell.swift */,
+				C4A50AAA25EE4D2E00AA44E3 /* IndicatorCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -108,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				C4713F8C25E71D890072666A /* Pokemons.swift */,
-				C4713F9825E812FF0072666A /* PokemonsInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,11 +192,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4713F7F25E6F5B10072666A /* HomeScreenView.swift in Sources */,
+				C4A50AAB25EE4D2E00AA44E3 /* IndicatorCell.swift in Sources */,
 				C4713F8D25E71D890072666A /* Pokemons.swift in Sources */,
 				C4713F8425E716EF0072666A /* HomeScreenViewModel.swift in Sources */,
 				C4713F8825E719EE0072666A /* HomeScreenCollectionViewCell.swift in Sources */,
 				C4713F6A25E6F47A0072666A /* HomeScreenViewController.swift in Sources */,
-				C4713F9925E812FF0072666A /* PokemonsInfo.swift in Sources */,
 				C4713F9625E7C21D0072666A /* PokemonsService.swift in Sources */,
 				C4713F9225E71F230072666A /* UIImageView+URL.swift in Sources */,
 				C4713F6625E6F47A0072666A /* AppDelegate.swift in Sources */,
