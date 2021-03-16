@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol HomeScreenViewDelegate: class {
+    func didTapPokemon(at index: Int)
+}
+
 class HomeScreenView: UIView {
+    
+    weak var delegate: HomeScreenViewDelegate?
     
     var viewModel = HomeScreenViewModel()
     let pokemonCellId = "pokemonCellId"
@@ -29,8 +35,6 @@ class HomeScreenView: UIView {
         setupConstraints()
         configure()
         reloadData()
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -49,7 +53,6 @@ class HomeScreenView: UIView {
     func configure() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        
     }
     func setupHierachy(){
         self.addSubview(collectionView)
@@ -87,8 +90,13 @@ extension HomeScreenView: UICollectionViewDataSource, UICollectionViewDelegate, 
             let width = collectionView.frame.width
             return CGSize(width: width , height: 40)
         }
-       
+        
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didTapPokemon(at: indexPath.row)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
@@ -98,10 +106,7 @@ extension HomeScreenView: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == viewModel.poke.count{
-            let seconds = 0.2
-            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-                self.updateNextSet()
-            }
+            updateNextSet()
         }
     }
     func updateNextSet(){

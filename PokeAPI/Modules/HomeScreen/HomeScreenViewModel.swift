@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class HomeScreenViewModel {
-    
+  
     var pokemons:Pokemons?
     var poke:[Results] = []
     var fetchInProgress:Bool = false
@@ -80,6 +80,11 @@ class HomeScreenViewModel {
         let randomColor = UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 1.0)
         
         return randomColor
+    }
+
+    func returnTappedPokemon(at index: Int) -> Results {
+        let pokemon = poke[index]
+        return pokemon
     }
     
 }
