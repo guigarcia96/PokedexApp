@@ -5,7 +5,7 @@ Here you can search and see the characteristics of your favorite pokemons
 
 An iOS App that you can see all the pokemons and see details from PokeAPI.
 
-![home](https://user-images.githubusercontent.com/22078132/117671470-34384d00-b17f-11eb-9f3f-32083a73f844.gif
+![home](https://user-images.githubusercontent.com/22078132/117671470-34384d00-b17f-11eb-9f3f-32083a73f844.gif)
 
 
 ## Requirements
