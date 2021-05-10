@@ -11,8 +11,8 @@ import UIKit
 class MainCoordinator: Coordinator {
     var navigationController: UINavigationController?
     
-    func goToDetailsScreen(poke: Results) {
-        let viewModel = DetailsScreenViewModel(pokemon: poke)
+    func goToDetailsScreen(poke: Results, color: UIColor) {
+        let viewModel = DetailsScreenViewModel(pokemon: poke, color: color)
         let vc = DetailsScreenViewController(viewModel: viewModel)
         viewModel.set(controller: vc)
         navigationController?.pushViewController(vc, animated: true)

@@ -7,16 +7,14 @@
 
 import Foundation
 
-// MARK: - Welcome
+// MARK: - Pokemon
 struct Pokemon: Codable {
-    let height: Int?
-    let name: String?
-    let sprites: Sprites?
-    let stats: [StatElement]?
-    let types: [TypeElement]?
-    let weight: Int?
-    let other: Other?
-    let dreamWorld: DreamWorld?
+    let height: Int
+    let name: String
+    let sprites: Sprites
+    let stats: [StatElement]
+    let types: [TypeElement]
+    let weight: Int
 }
 
 // MARK: - Sprites
@@ -24,19 +22,18 @@ struct Sprites: Codable {
     let other: Other
 }
 
-// MARK: - Other
 struct Other: Codable {
-    let dreamWorld: DreamWorld
-
+    let officialArtwork: OfficialArtwork
+    
     enum CodingKeys: String, CodingKey {
-        case dreamWorld = "dream_world"
+        case officialArtwork = "official-artwork"
     }
 }
 
-// MARK: - DreamWorld
-struct DreamWorld: Codable {
+// MARK: - OfficialArtwork
+struct OfficialArtwork: Codable {
     let frontDefault: String
-
+    
     enum CodingKeys: String, CodingKey {
         case frontDefault = "front_default"
     }
@@ -46,7 +43,7 @@ struct DreamWorld: Codable {
 struct StatElement: Codable {
     let baseStat, effort: Int
     let stat: TypeClass
-
+    
     enum CodingKeys: String, CodingKey {
         case baseStat = "base_stat"
         case effort, stat

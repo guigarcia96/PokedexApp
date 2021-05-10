@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DetailsScreenViewControllerContract {
-    func setup(with: Pokemon)
+    func setup(with: Pokemon, color: UIColor)
 }
 
 class DetailsScreenViewController: UIViewController, Cordinating {
@@ -39,13 +39,14 @@ class DetailsScreenViewController: UIViewController, Cordinating {
         view.backgroundColor = .darkGray
         title = "Pokemon Details"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.barTintColor = .red
+        navigationController?.navigationBar.barTintColor = viewModel.returnSelectedColor()
+        navigationController?.navigationBar.topItem?.backButtonTitle = ""
     }
 }
 
 extension DetailsScreenViewController: DetailsScreenViewControllerContract {
-    func setup(with: Pokemon) {
-        myView.setup(with: with)
+    func setup(with: Pokemon, color: UIColor) {
+        myView.setup(with: with, viewColor: color)
     }
 }
 

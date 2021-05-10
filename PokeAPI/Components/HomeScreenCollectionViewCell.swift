@@ -49,8 +49,8 @@ class HomeScreenCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(cellImage)
         contentView.addSubview(cellLabel)
         
-        cellImage.widthAnchor.constraint(lessThanOrEqualToConstant: 120).isActive = true
-        cellImage.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        cellImage.widthAnchor.constraint(lessThanOrEqualToConstant: 80).isActive = true
+        cellImage.heightAnchor.constraint(equalToConstant: 80).isActive = true
         cellImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         cellImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         

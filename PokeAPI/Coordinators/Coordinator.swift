@@ -11,7 +11,7 @@ import UIKit
 protocol Coordinator {
     var navigationController: UINavigationController? {get set}
     func start()
-    func goToDetailsScreen(poke: Results)
+    func goToDetailsScreen(poke: Results, color: UIColor)
 }
 
 protocol Cordinating {

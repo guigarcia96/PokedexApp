@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeScreenViewDelegate: class {
-    func didTapPokemon(at index: Int)
+    func didTapPokemon(at index: Int, color: UIColor)
 }
 
 class HomeScreenView: UIView {
@@ -94,7 +94,8 @@ extension HomeScreenView: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didTapPokemon(at: indexPath.row)
+        guard let cellCollor = collectionView.cellForItem(at: indexPath)?.backgroundColor else { return }
+        delegate?.didTapPokemon(at: indexPath.row, color: cellCollor)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
